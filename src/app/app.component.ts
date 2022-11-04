@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-virtusa-emp-app';
+
+  public isLanded: boolean = true;
+
 }

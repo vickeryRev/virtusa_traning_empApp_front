@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="btn-primary btn" >
+        <a routerLink="/employee" (click)="changeDisp()">Add new Employee</a>
+    </div>
+    <div class="btn-primary btn" (click)="getEmps()">View Employees</div>
+
+    <div class="card-body" *ngFor="let u of emps">
+        <p>name : {{u.firstName}} {{u.lastName}}</p>
+        <p>department : {{u.department}}</p>
+    </div>
+</div>

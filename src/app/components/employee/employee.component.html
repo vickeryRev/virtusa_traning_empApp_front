@@ -1,0 +1,42 @@
+<div>
+    <div>
+        <h2 class="card-header">Add an employee</h2>
+    </div>
+
+    <div class="card-body">
+        <form action="" class="row g-3">
+            <div class="col-md-3">
+                <label for="inFirst" class="from-lable">First Name</label>
+                <input [(ngModel)]="emp.firstName" type="text" class="form-control" name="first" id = "inFirst">
+            </div>
+            <div class="col-md-3">
+                <label for="inLast" class="from-lable">Last Name</label>
+                <input [(ngModel)]="emp.lastName" type="text" class="form-control" name="last" id = "inLast">
+            </div>
+
+            <h3>Select your department</h3>
+            <form>
+                <div class="dept" class="col-md-3">
+                    <label for="departmentSelection" class="form-label"></label>
+                    <select [(ngModel)]="emp.department" name="departmentSelection" id="depatmentSelection" class="form-select">
+                        <option value="Finance">Finance</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Human_Resources">Human Resources</option>
+                    </select>
+                </div>
+            </form>
+
+            <div class="btn-primary btn" type="submit" (click) = "addEmployee()">add</div>
+
+           
+            
+        </form>
+        <div>
+            <p>{{added}}</p>
+        </div>
+
+        <div class="btn-primary btn" >
+            <a routerLink="/home">Home</a>
+        </div>
+    </div>
+</div>
