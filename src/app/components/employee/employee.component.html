@@ -4,39 +4,84 @@
     </div>
 
     <div class="card-body">
-        <form action="" class="row g-3">
-            <div class="col-md-3">
-                <label for="inFirst" class="from-lable">First Name</label>
-                <input [(ngModel)]="emp.firstName" type="text" class="form-control" name="first" id = "inFirst">
+        <form [formGroup]="empForm">
+
+            <!--Firstname-->
+            <div class="inputbox mt-3">
+                <label for="firstName">FirstName</label>
+                <input type="text"
+                formControlName="firstName"
+                name="firstName"
+                class="form-control"
+                required="required"
+                [ngClass]="{
+                    invalid:
+                        empForm.get('firstName')!.invalid  
+                }"
+                >
             </div>
-            <div class="col-md-3">
-                <label for="inLast" class="from-lable">Last Name</label>
-                <input [(ngModel)]="emp.lastName" type="text" class="form-control" name="last" id = "inLast">
+
+            <!--lastname-->
+            <div class="inputbox mt-3">
+                <label for="lastName">LastName</label>
+                <input type="text"
+                formControlName="lastName"
+                name="lastName"
+                class="form-control"
+                required="required"
+                [ngClass]="{
+                    invalid:
+                        empForm.get('lastName')!.invalid
+                }"
+                >
+            </div>
+            <!--email-->
+            <div class="inputbox mt-3">
+                
+                <input type="email" class="form-contorl"
+                required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" 
+                name="email"
+                required="required"
+                
+                >
+                
             </div>
 
-            <h3>Select your department</h3>
-            <form>
-                <div class="dept" class="col-md-3">
-                    <label for="departmentSelection" class="form-label"></label>
-                    <select [(ngModel)]="emp.department" name="departmentSelection" id="depatmentSelection" class="form-select">
-                        <option value="Finance">Finance</option>
-                        <option value="Engineering">Engineering</option>
-                        <option value="Human_Resources">Human Resources</option>
-                    </select>
-                </div>
-            </form>
-
-            <div class="btn-primary btn" type="submit" (click) = "addEmployee()">add</div>
-
-           
+            <!--department-->
+            <div>
+                <label for="department">Department</label>
+                <select class="custom-select my-1 mr-sm-2" 
+                formControlName="department"
+                name="department"
+                required="required"
+                [ngClass]="{
+                    invalid:
+                        empForm.get('department')!.invalid
+                }"
+                >
+                    <option value="Human_Resources">Human_Resources</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Finance">Finance</option>
+                </select>
+            </div>
             
+
         </form>
+        <div class="mt-4">
+            <button 
+                class="btn-success btn px-3"
+                (click)="test()"
+                [disabled] = "empForm.invalid"
+            >
+                Add Employee
+            </button>
+        </div>
         <div>
             <p>{{added}}</p>
         </div>
 
         <div class="btn-primary btn" >
-            <a routerLink="/home">Home</a>
+            <a routerLink="/">Home</a>
         </div>
     </div>
 </div>
