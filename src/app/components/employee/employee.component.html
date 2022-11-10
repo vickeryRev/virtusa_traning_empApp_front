@@ -18,6 +18,7 @@
                     invalid:
                         empForm.get('firstName')!.invalid  
                 }"
+                
                 >
             </div>
 
@@ -33,19 +34,22 @@
                     invalid:
                         empForm.get('lastName')!.invalid
                 }"
+                
                 >
             </div>
             <!--email-->
             <div class="inputbox mt-3">
                 
-                <input type="email" class="form-contorl"
-                required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" 
+                <input type="string" class="form-contorl"
+                formControlName="email"
+                
                 name="email"
                 required="required"
                 [ngClass]="{
                     invalid:
                         empForm.get('email')!.invalid
                 }"
+                
                 >
                 
             </div>
@@ -62,7 +66,7 @@
                     invalid:
                         empForm.get('department')!.invalid
                 }"
-                [(ngModel)]="dep"
+                
                 >
                     <option value=Human_Resources>Human_Resources</option>
                     <option value=Engineering>Engineering</option>
@@ -75,7 +79,7 @@
         <div class="mt-4">
             <button 
                 class="btn-success btn px-3"
-                (click)="addEmployee()"
+                (click)="addEmployee(empForm.value)"
                 [disabled] = "empForm.invalid"
             >
                 Add Employee
